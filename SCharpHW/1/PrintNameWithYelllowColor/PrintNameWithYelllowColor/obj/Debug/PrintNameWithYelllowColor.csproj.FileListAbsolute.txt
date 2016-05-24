@@ -1,0 +1,6 @@
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\bin\Debug\PrintNameWithYelllowColor.exe.config
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\bin\Debug\PrintNameWithYelllowColor.exe
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\bin\Debug\PrintNameWithYelllowColor.pdb
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\obj\Debug\PrintNameWithYelllowColor.csprojResolveAssemblyReference.cache
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\obj\Debug\PrintNameWithYelllowColor.exe
+C:\Users\eugen\Documents\Visual Studio 2013\Projects\ShkolaSoftheme\SCharpHW\1\PrintNameWithYelllowColor\PrintNameWithYelllowColor\obj\Debug\PrintNameWithYelllowColor.pdb
