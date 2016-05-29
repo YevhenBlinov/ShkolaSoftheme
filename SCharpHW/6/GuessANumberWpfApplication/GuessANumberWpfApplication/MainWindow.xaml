@@ -1,0 +1,26 @@
+﻿<Window x:Class="GuessANumberWpfApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="GuessANumber" Height="100" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Label Content="Please, enter a number from 1 to 10 and press Enter"
+               HorizontalAlignment="Center"
+               Margin="0,0,0,0"
+               VerticalAlignment="Center"/>
+        <TextBox x:Name="NumberTextBox"
+                 HorizontalAlignment="Center"
+                 Height="23"
+                 Margin="0,10,0,0"
+                 Grid.Row="1"
+                 TextWrapping="Wrap"
+                 Text=""
+                 VerticalAlignment="Top"
+                 Width="20"
+                 KeyDown="NumberTextBox_OnKeyDown"/>
+
+    </Grid>
+</Window>
