@@ -38,7 +38,7 @@ namespace UserRegistrationWpfApplication
                 return;
             }
 
-            if (!VerifyDayTextBox(MonthTextBox.Text))
+            if (!VerifyMonthTextBox(MonthTextBox.Text))
             {
                 MessageBox.Show("Month must contain at least 1 symbol and only numbers. Minimum month value must be 1, maximum month value must be 12.", "Warning",
                     MessageBoxButton.OK, MessageBoxImage.Warning);
