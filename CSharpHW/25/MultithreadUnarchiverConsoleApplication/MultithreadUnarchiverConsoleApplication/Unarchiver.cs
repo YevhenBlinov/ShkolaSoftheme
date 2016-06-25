@@ -6,8 +6,12 @@ namespace MultithreadUnarchiverConsoleApplication
 {
     class Unarchiver
     {
-        public void UnarchiveTheFolder(string pathToFolder)
+        public void UnarchiveTheFolder(object pathToFolderObject)
         {
+            var pathToFolder = pathToFolderObject as string;
+            if(pathToFolder == null)
+                return;
+
             var subDirectories = Directory.GetDirectories(pathToFolder);
             var files = Directory.GetFiles(pathToFolder);
 
@@ -26,7 +30,8 @@ namespace MultithreadUnarchiverConsoleApplication
 
             foreach (var subDirectory in subDirectories)
             {
-                UnarchiveTheFolder(subDirectory);
+                var newThread = new Thread(UnarchiveTheFolder);
+                newThread.Start(subDirectory);
             }
         }
 
