@@ -6,8 +6,12 @@ namespace MultithreadArchiverConsoleApplication
 {
     public class Archiver
     {
-        public void ArchivateTheFolder(string pathToFolder)
+        public void ArchivateTheFolder(object pathToFolderObject)
         {
+            var pathToFolder = pathToFolderObject as string;
+            if (pathToFolder == null)
+                return;
+
             var subDirectories = Directory.GetDirectories(pathToFolder);
             var files = Directory.GetFiles(pathToFolder);
 
@@ -22,7 +26,8 @@ namespace MultithreadArchiverConsoleApplication
 
             foreach (var subDirectory in subDirectories)
             {
-                ArchivateTheFolder(subDirectory);
+                var newThread = new Thread(ArchivateTheFolder);
+                newThread.Start(subDirectory);
             }
         }
 
