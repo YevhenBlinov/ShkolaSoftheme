@@ -17,8 +17,8 @@ namespace BugTrackingSystem.Web.Controllers
         public ActionResult Task(int bugId = 1)
         {
             var info = _bugService.GetFullBugById(bugId);
-            _bugService.UpdateBugPriority(1, BugPriority.Major);
-            _bugService.UpdateBugStatus(1, BugStatus.ToDo);
+            //_bugService.UpdateBugPriority(1, BugPriority.Critical);
+            //_bugService.UpdateBugStatus(1, BugStatus.ToDo);
             return View(info);
         }
     }

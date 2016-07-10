@@ -1,29 +1,17 @@
-﻿using Microsoft.Azure;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
+﻿using Microsoft.ServiceBus.Messaging;
 
 namespace BugTrackingSystem.AzureService
 {
     public class QueueService
     {
-        private const string ConnectionString = "StorageConnectionString";
-        private CloudStorageAccount _storageAccount;
-        private CloudQueueClient _queueClient;
-        private CloudQueue _queue;
-
-        public QueueService()
-        {
-            var appSetting = CloudConfigurationManager.GetSetting(ConnectionString);
-            _storageAccount = CloudStorageAccount.Parse(appSetting);
-            _queueClient = _storageAccount.CreateCloudQueueClient();
-            _queue = _queueClient.GetQueueReference("myqueue");
-            _queue.CreateIfNotExists();
-        }
+        private const string ConnectionString = "Endpoint=sb://blinov.servicebus.windows.net/;SharedAccessKeyName=ProducerAccessKey;SharedAccessKey=0GwrLQ98xtYfZwDtT66pOqCvz6hTCjM1XjHnZ9J72HA=";
 
         public void AddMessageToQueue(string messageContent)
         {
-            var messageToAdd = new CloudQueueMessage(messageContent);
-            _queue.AddMessage(messageToAdd);
+            var queueName = "blinovqueue";
+            var client = QueueClient.CreateFromConnectionString(ConnectionString, queueName);
+            var message = new BrokeredMessage(messageContent);
+            client.Send(message);
         }
     }
 }
