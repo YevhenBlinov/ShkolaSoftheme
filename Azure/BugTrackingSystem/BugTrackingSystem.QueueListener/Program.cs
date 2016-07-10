@@ -35,10 +35,7 @@ namespace BugTrackingSystem.QueueListener
                 {
                     Console.WriteLine("\n**High Messages**");
                     var body = message.GetBody<string>();
-                    Console.WriteLine("Body: " + message.GetBody<string>());
-                    Console.WriteLine("MessageID: " + message.MessageId);
-                    Console.WriteLine("Message Number: " +
-                    message.Properties["MessageNumber"]);
+                    Console.WriteLine("Body: " + body);
                     message.Complete();
                 }
 
