@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Net;
 using System.Net.Mail;
-using Microsoft.Azure;
 using Microsoft.ServiceBus.Messaging;
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Queue;
 
 namespace BugTrackingSystem.QueueListener
 {
@@ -25,60 +22,54 @@ namespace BugTrackingSystem.QueueListener
             var queueName = "blinovqueue";
             var client = QueueClient.CreateFromConnectionString(ConnectionString, queueName);
 
-            var options = new OnMessageOptions();
-            options.AutoComplete = false;
-            options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
+            //var options = new OnMessageOptions();
+            //options.AutoComplete = false;
+            //options.AutoRenewTimeout = TimeSpan.FromMinutes(1);
 
-            client.OnMessage((message) =>
+            while (true)
             {
+                var message = client.Receive();
+                
+                if(message == null)
+                    continue;
+
                 try
                 {
-                    Console.WriteLine("\n**High Messages**");
-                    var body = message.GetBody<string>();
-                    Console.WriteLine("Body: " + body);
+                    Console.WriteLine("Processing a new message...");
+                    var queueMessage = message.GetBody<string>();
+                    var queueMessageInformation = queueMessage.Split(' ');
+                    var fromAddress = new MailAddress(MyEmailAdress, "Asignar tester");
+                    var toAddress = new MailAddress(queueMessageInformation[0]);
+                    var body = string.Format("The {0} was changed from {1} to {2}", queueMessageInformation[1],
+                        queueMessageInformation[2], queueMessageInformation[3]);
+
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(fromAddress.Address, Password)
+                    };
+
+                    using (var mailMessage = new MailMessage(fromAddress, toAddress)
+                    {
+                        Subject = Subject,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(mailMessage);
+                    }
+
+                    Console.WriteLine("Email was sent to {0}", queueMessageInformation[0]);
                     message.Complete();
                 }
-
                 catch (Exception)
                 {
                     message.Abandon();
                 }
-
-            }, options);
-            //while (true)
-            //{
-            //    var queueMessage = queue.GetMessage();
-
-            //    if (queueMessage == null)
-            //        continue;
-
-            //    var queueMessageInformation = queueMessage.AsString.Split(' ');
-            //    var fromAddress = new MailAddress(MyEmailAdress, "Asignar tester");
-            //    var toAddress = new MailAddress(queueMessageInformation[0]);
-            //    var body = string.Format("The {0} was changed from {1} to {2}", queueMessageInformation[1],
-            //        queueMessageInformation[2], queueMessageInformation[3]);
-
-            //    var smtp = new SmtpClient
-            //    {
-            //        Host = "smtp.gmail.com",
-            //        Port = 587,
-            //        EnableSsl = true,
-            //        DeliveryMethod = SmtpDeliveryMethod.Network,
-            //        UseDefaultCredentials = false,
-            //        Credentials = new NetworkCredential(fromAddress.Address, Password)
-            //    };
-
-            //    using (var message = new MailMessage(fromAddress, toAddress)
-            //    {
-            //        Subject = Subject,
-            //        Body = body
-            //    })
-            //    {
-            //        smtp.Send(message);
-            //    }
-
-            //    queue.DeleteMessage(queueMessage);
-            //}
+            }         
         }
     }
 }
