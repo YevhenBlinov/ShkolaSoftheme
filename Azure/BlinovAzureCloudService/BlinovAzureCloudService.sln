@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.40629.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "BlinovAzureCloudService", "BlinovAzureCloudService\BlinovAzureCloudService.ccproj", "{B6FCB544-5F4F-4994-993D-57AB8EC45CEE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlinovWebRole", "BlinovWebRole\BlinovWebRole.csproj", "{58759EA6-35AA-466D-AC18-9E0DFB31518D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlinovWorkerRole", "BlinovWorkerRole\BlinovWorkerRole.csproj", "{5C06439F-4767-466D-BC6A-3A2D5977B05A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B6FCB544-5F4F-4994-993D-57AB8EC45CEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6FCB544-5F4F-4994-993D-57AB8EC45CEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6FCB544-5F4F-4994-993D-57AB8EC45CEE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6FCB544-5F4F-4994-993D-57AB8EC45CEE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{58759EA6-35AA-466D-AC18-9E0DFB31518D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{58759EA6-35AA-466D-AC18-9E0DFB31518D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{58759EA6-35AA-466D-AC18-9E0DFB31518D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{58759EA6-35AA-466D-AC18-9E0DFB31518D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C06439F-4767-466D-BC6A-3A2D5977B05A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C06439F-4767-466D-BC6A-3A2D5977B05A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C06439F-4767-466D-BC6A-3A2D5977B05A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C06439F-4767-466D-BC6A-3A2D5977B05A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
